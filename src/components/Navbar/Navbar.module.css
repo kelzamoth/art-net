@@ -1,0 +1,22 @@
+.nav {
+    grid-area: n;
+    background-color: rgba(73, 73, 73, 95%);
+    box-shadow: 5px 2px 10px rgb(0 0 0 / 70%);
+  }
+
+.item a {
+    color: white;
+    font-size: 25px;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+.block {
+  display: grid;
+  grid-template-rows: repeat(5,1fr);
+  grid-gap: 10px;
+  margin: 30px auto auto 30px;
+}
+
+.item a.active {
+  color: rgb(180, 180, 180);
+}

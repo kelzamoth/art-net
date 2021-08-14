@@ -1,0 +1,22 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    font-size: 24px;
+}
+
+.dialogsItem  {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    margin: 10px;
+
+}
+
+.dialogsItem  a {
+    margin: 10px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.messageItem {
+    padding: 10px;
+}

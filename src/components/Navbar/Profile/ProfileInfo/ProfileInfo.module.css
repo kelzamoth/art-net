@@ -1,0 +1,15 @@
+.head {
+    background: url('../../../../img/dark-souls-3-review_6tw5.1280.jpg') no-repeat;
+    background-size: contain;
+    min-height: 375px;
+}
+
+.item {
+    margin: 15px 50px;
+    background: url('../../../../img/dark-monster-wallpaper-preview.jpg') no-repeat;
+    background-size: 170px 150px;
+    height: 150px;
+}
+.item img {
+    max-width: 100px;
+}
