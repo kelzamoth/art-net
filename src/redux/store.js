@@ -1,5 +1,8 @@
 import picture from '../img/cat.jpg';
 import pictureTwo from '../img/ghul.png';
+import dialogPageReducer from './dialogPageReducer';
+import profilePageReducer from './profilePageReducer';
+
 
 let store = {
     _state: {
@@ -35,8 +38,9 @@ let store = {
                 { id: 5, message: 'I want to meet you' },
                 { id: 6, message: 'Hi, how are you?' },
                 { id: 7, message: 'I want to meet you' }
-            ]
-        },
+            ],
+            newTextMessage: ''
+        }
     },
 
     _callSubscriber() {
@@ -47,38 +51,15 @@ let store = {
         return this._state;
     },
 
-    subscrider(observer) {
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
 
-    addPost() {
-        let newPost = { id: 9, img: picture, message: this._state.profilePage.newPostText, likeCount: 0 }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._getState);
-    },
-
-    uppdateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._getState);
-    },
-
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
-            let newPost = { id: 9, img: picture, message: this._state.profilePage.newPostText, likeCount: 0 }
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._getState);
-        }
-        else if (action.type === 'UPP-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._getState);
-        }
+        this._state.profilePage = profilePageReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogPageReducer(this._state.dialogPage, action);
+        this._callSubscriber(this._state);
     }
 };
-
-
-window.store = store;
-
 
 export default store;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { addNewPost, uppdateNewPostText } from '../../../../redux/profilePageReducer';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
@@ -8,13 +9,13 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch({ type: 'ADD-POST' });
-    };
+    let onAddPost = () => {
+        props.addPost();
+    }
 
     let newPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch({ type: 'UPP-NEW-POST-TEXT', newText: text });
+        props.uppdateNewPostText(text);
     };
 
     return (
@@ -24,7 +25,7 @@ const MyPosts = (props) => {
                     <div>
                         <textarea ref={newPostElement} value={props.profilePage.newPostText} onChange={newPostChange} />
                     </div>
-                    <div onClick={addPost}>
+                    <div onClick={ onAddPost }>
                         <button>Add post</button>
                     </div>
                 </div>
