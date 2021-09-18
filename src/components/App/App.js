@@ -8,6 +8,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import News from '../Navbar/News/News';
 import Art from '../Navbar/Art/Art';
 import Settings from '../Navbar/Settings/Settings';
+import Users from '../Navbar/Users/Users'
 
 
 const App = (props) => {
@@ -17,8 +18,9 @@ const App = (props) => {
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
-          <Route path='/profile'  render={() => <Profile store={props.store} />}/>
+          <Route path='/profile'  render={() => <Profile  />}/>
           <Route path='/dialogs' render={() =>  <DialogsContainer store={props.store} />}/>
+          <Route path='/users' render={() => <Users /> }/>
           <Route path='/news' render={News} />
           <Route path='/art' render={Art} />
           <Route path='/settings' render={Settings} />

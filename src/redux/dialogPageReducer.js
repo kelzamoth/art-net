@@ -1,4 +1,3 @@
-
 const ADD_MESSAGE = 'ADD_MESSAGE';
 const UPP_NEW_MESSAGE_TEXT = 'UPP_NEW_MESSAGE_TEXT';
 
@@ -29,13 +28,17 @@ export const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = { id: 7, message: state.newTextMessage };
-            state.messages.push(newMessage);
-            state.newTextMessage = '';
-            return state;
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                newTextMessage: ''
+            };
 
         case UPP_NEW_MESSAGE_TEXT:
-            state.newTextMessage = action.newTextUpdate;
-            return state;
+            return {
+                ...state,
+                newTextMessage: action.newTextUpdate
+            };
         default:
             return state;
     }

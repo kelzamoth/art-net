@@ -1,17 +1,16 @@
 import React from 'react';
-import { addNewPost, uppdateNewPostText } from '../../../../redux/profilePageReducer';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-    const postElements = props.profilePage.posts.map(post => <Post img={post.img} message={post.message} likeCount={post.likeCount} />);
+    const postElements = props.posts.map(post => <Post img={post.img} message={post.message} likeCount={post.likeCount} />);
 
     let newPostElement = React.createRef();
 
     let onAddPost = () => {
-        props.addPost();
-    }
+        props.addNewPost();
+    };
 
     let newPostChange = () => {
         let text = newPostElement.current.value;
@@ -23,7 +22,7 @@ const MyPosts = (props) => {
             <div><h3>My posts</h3>
                 <div>
                     <div>
-                        <textarea ref={newPostElement} value={props.profilePage.newPostText} onChange={newPostChange} />
+                        <textarea ref={newPostElement} value={props.newPostText} onChange={newPostChange} />
                     </div>
                     <div onClick={ onAddPost }>
                         <button>Add post</button>
