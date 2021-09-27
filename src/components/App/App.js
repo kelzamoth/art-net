@@ -8,7 +8,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import News from '../Navbar/News/News';
 import Art from '../Navbar/Art/Art';
 import Settings from '../Navbar/Settings/Settings';
-import Users from '../Navbar/Users/Users'
+import UsersContainer from '../Navbar/Users/UsersContainer';
 
 
 const App = (props) => {
@@ -20,7 +20,7 @@ const App = (props) => {
         <div className='app-wrapper-content'>
           <Route path='/profile'  render={() => <Profile  />}/>
           <Route path='/dialogs' render={() =>  <DialogsContainer store={props.store} />}/>
-          <Route path='/users' render={() => <Users /> }/>
+          <Route path='/users' render={() => <UsersContainer /> }/>
           <Route path='/news' render={News} />
           <Route path='/art' render={Art} />
           <Route path='/settings' render={Settings} />
