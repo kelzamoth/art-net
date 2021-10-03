@@ -3,6 +3,7 @@ import pictureTwo from '../img/ghul.png';
 
 const ADD_POST = 'ADD_POST';
 const UPP_NEW_POST_TEXT = 'UPP_NEW_POST_TEXT';
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 
 let initialState = {
     posts: [
@@ -13,7 +14,8 @@ let initialState = {
         { id: 5, img: picture, message: 'My scars is really hurts', likeCount: 14 },
         { id: 6, img: pictureTwo, message: 'I cannot stand this f@#$@ng ass itch', likeCount: 88 },
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 };
 
 
@@ -27,18 +29,24 @@ export const profilePageReducer = (state = initialState, action) => {
                 newPostText: ''
             };
 
-
         case UPP_NEW_POST_TEXT:
             return {
                 ...state,
                 newPostText: action.newText
             };
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
+
         default:
             return state;
     }
 };
 
-export let addNewPost = () => ({ type: ADD_POST });
-export let uppdateNewPostText = (text) => ({ type: UPP_NEW_POST_TEXT, newText: text });
+export const addNewPost = () => ({ type: ADD_POST });
+export const uppdateNewPostText = (text) => ({ type: UPP_NEW_POST_TEXT, newText: text });
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile })
 
 export default profilePageReducer;

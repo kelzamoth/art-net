@@ -11,6 +11,7 @@ const Dialogs = (props) => {
     let newUpdTextMessage = props.newTextMessage;
     
     let onSendMessageClick = () => {
+
         props.addNewMessage();
     }
     let onMessageChange =(event) => {

@@ -10,3 +10,16 @@
     margin: 20px auto auto 30px;
     font-size: 40px;
   }
+
+  .loginBlock {
+      float: right;
+      text-decoration: none;
+      color: white;
+      margin: -30px 30px auto auto;
+      font-size: 20px;
+  }
+
+.loginBlock a {
+    text-decoration: none;
+    color: white;
+}
