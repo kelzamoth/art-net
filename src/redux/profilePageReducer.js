@@ -1,10 +1,11 @@
 import picture from '../img/cat.jpg';
 import pictureTwo from '../img/ghul.png';
-import {usersAPI} from "../API/api";
+import {profileAPI, usersAPI} from "../API/api";
 
 const ADD_POST = 'ADD_POST';
 const UPP_NEW_POST_TEXT = 'UPP_NEW_POST_TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
+const SET_STATUS = 'SET_STATUS';
 
 let initialState = {
     posts: [
@@ -16,7 +17,8 @@ let initialState = {
         { id: 6, img: pictureTwo, message: 'I cannot stand this f@#$@ng ass itch', likeCount: 88 },
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    status: ""
 };
 
 
@@ -40,6 +42,11 @@ export const profilePageReducer = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
+        case SET_STATUS:
+            return {
+                ...state,
+                status: action.status
+            }
 
         default:
             return state;
@@ -49,15 +56,30 @@ export const profilePageReducer = (state = initialState, action) => {
 export const addNewPost = () => ({ type: ADD_POST });
 export const uppdateNewPostText = (text) => ({ type: UPP_NEW_POST_TEXT, newText: text });
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile });
+export const setUserStatus = (status) => ({type: SET_STATUS, status });
 
 export const getUserProfile = (userId) => {
     return (dispatch) => {
-        if (!userId) {
-            userId = 2;
-        }
         usersAPI.getProfile(userId).then(response => {
             dispatch(setUserProfile(response.data))
         });
     }
 }
+export const getStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.getUserStatus(status).then(response => {
+            dispatch(setUserStatus(response.data))
+        });
+    }
+}
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(setUserStatus(status))
+            }
+        });
+    }
+}
+
 export default profilePageReducer;
