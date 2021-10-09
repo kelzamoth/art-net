@@ -8,7 +8,7 @@ const Header = (props) => {
             <div className={styles.title}>Kelzamoth</div>
             <div className={styles.loginBlock}>
                 {props.isAuth? props.login :
-                <NavLink to={'/login'} >Login</NavLink>}
+                <NavLink to={'/login'} >Log in</NavLink>}
             </div>
         </header>
     )

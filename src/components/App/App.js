@@ -9,6 +9,7 @@ import Settings from '../Navbar/Settings/Settings';
 import UsersContainer from '../Navbar/Users/UsersContainer';
 import ProfileContainer from "../Navbar/Profile/ProfileContainer";
 import HeaderContainer from "../Header/HeaderContainer";
+import LoginPage from "../Navbar/Login/Login";
 
 
 const App = (props) => {
@@ -23,6 +24,7 @@ const App = (props) => {
           <Route path='/news' render={News} />
           <Route path='/art' render={Art} />
           <Route path='/settings' render={Settings} />
+          <Route path='/login' render={LoginPage} />
         </div>
       </div>
   )

@@ -1,5 +1,6 @@
 import picture from '../img/cat.jpg';
 import pictureTwo from '../img/ghul.png';
+import {usersAPI} from "../API/api";
 
 const ADD_POST = 'ADD_POST';
 const UPP_NEW_POST_TEXT = 'UPP_NEW_POST_TEXT';
@@ -47,6 +48,16 @@ export const profilePageReducer = (state = initialState, action) => {
 
 export const addNewPost = () => ({ type: ADD_POST });
 export const uppdateNewPostText = (text) => ({ type: UPP_NEW_POST_TEXT, newText: text });
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile })
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile });
 
+export const getUserProfile = (userId) => {
+    return (dispatch) => {
+        if (!userId) {
+            userId = 2;
+        }
+        usersAPI.getProfile(userId).then(response => {
+            dispatch(setUserProfile(response.data))
+        });
+    }
+}
 export default profilePageReducer;
