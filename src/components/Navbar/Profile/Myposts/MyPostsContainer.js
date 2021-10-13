@@ -5,20 +5,15 @@ import MyPosts from './MyPosts';
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.profilePage.posts,
-        newPostText: state.profilePage.newPostText
+        posts: state.profilePage.posts
     }
 
 };
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        addNewPost: () => {
-            dispatch(addNewPost());
-        },
-        uppdateNewPostText: (text) => {
-            let action = uppdateNewPostText(text);
-            dispatch(action)
+        addNewPost: (postText) => {
+            dispatch(addNewPost(postText));
         }
     }
 };

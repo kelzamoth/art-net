@@ -1,5 +1,4 @@
-const ADD_MESSAGE = 'ADD_MESSAGE';
-const UPP_NEW_MESSAGE_TEXT = 'UPP_NEW_MESSAGE_TEXT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 let initialState = {dialogs: [
     { id: 1, name: 'Konstantinusail' },
@@ -20,31 +19,24 @@ let initialState = {dialogs: [
         { id: 5, message: 'I want to meet you' },
         { id: 6, message: 'Hi, how are you?' },
         { id: 7, message: 'I want to meet you' }
-    ],
-    newTextMessage: ''
+    ]
 };
 
 export const dialogPageReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_MESSAGE:
-            let newMessage = { id: 7, message: state.newTextMessage };
+
+        case SEND_MESSAGE:
+            let newMessage = { id: 7, message: action.newMessageBody };
             return {
                 ...state,
-                messages: [...state.messages, newMessage],
-                newTextMessage: ''
+                messages: [...state.messages, newMessage]
             };
 
-        case UPP_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newTextMessage: action.newTextUpdate
-            };
         default:
             return state;
     }
 };
 
-export let addNewMessage = () => ({ type: ADD_MESSAGE });
-export let uppdateNewMessageText = (text) => ({ type: UPP_NEW_MESSAGE_TEXT, newTextUpdate: text });
+export let sendNewMessageCreator = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody});
 
 export default dialogPageReducer;
