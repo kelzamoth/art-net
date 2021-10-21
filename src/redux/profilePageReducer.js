@@ -24,14 +24,11 @@ export const profilePageReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = { id: 9, img: picture, message: action.postText, likeCount: 0 };
-            if (action.postText !== undefined) {
                 return {
                     ...state,
                     posts: [...state.posts, newPost]
                 }
-            } else {
-                return state;
-            }
+
 
         case SET_USER_PROFILE:
             return {
