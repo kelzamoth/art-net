@@ -3,8 +3,6 @@ import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
 import s from './Dialogs.module.css'
 import {Redirect} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
-import {sendNewMessage} from "../../../redux/dialogPageReducer";
 import {AddMessageFormRedux} from "./AddMessagesForm/AddMessageForm";
 
 const Dialogs = (props) => {
