@@ -32,6 +32,7 @@ export const authMe = () => (dispatch) => {
                 dispatch(setAuthUserData(id, email, login, true));
             }
         });
+        return "yoooo"
     }
 
 export const login = (email, password, rememberMe) => (dispatch) => {
